@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
     <title>Hello, world!</title>
   </head>
@@ -16,20 +16,20 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     
-    
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel container">
+    <div class="container">
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel ">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="img/1.jpeg" width="300px" class="" alt="...">
+      <img src="img/1.jpeg" width="100%" height="280px" class="" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="img/2.jpeg" width="300px" class="" alt="...">
+      <img src="img/2.jpeg" width="100%" height="280px" class="" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="img/3.jpeg" class=""  width="300px" alt="...">
+      <img src="img/3.jpeg" class="" height="280px"  width="100%" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="img/4.jpeg" class=""  width="300px" alt="...">
+      <img src="img/4.jpeg" class="" height="280px"  width="100%" alt="...">
     </div>
     
   </div>
@@ -43,7 +43,8 @@
   </a>
 </div>
     
-    
+
+
     <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -51,7 +52,9 @@
     $(document).ready(function(){
     $('.myHead').load('head.html');
     $('.myFoot').load('foot.html');
-      $('.carousel').carousel()
+      $('.carousel').carousel({
+  interval: 4000
+})
     })
     </script>
   </body>
