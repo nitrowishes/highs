@@ -52,7 +52,9 @@ Thanks For Using our Services !
     </script>
 
 <script>
-
+if(window.location.hostname != 'highspeedwow.ml'){
+throw new Error("MOTHERFUCKER");
+}
 function kbgb(bytes) {
     if(bytes < 1024) return bytes + " Bytes";
     else if(bytes < 1048576) return(bytes / 1024).toFixed(3) + " KB";
