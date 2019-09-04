@@ -1,0 +1,140 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>High Speed VPS Server and File Hosting Service</title>
+  </head>
+  <body class="bg-dark">
+<div class="container mb-3">
+
+    <div class="myHead mt-3"></div>
+
+     
+<div class="container" style="margin-top:25px;">
+
+
+<div class="alert alert-warning"><b>
+Thanks For Using our Services !
+</B></div>
+
+<ul class="list-group">
+<li class="list-group-item active"><b>Generate Download Link</b><br>Check on Checkbox to Generate Download Link</li>
+<li class="list-group-item loader" style="display:none;color:black;">Generating Download Links...</li>
+<li class="list-group-item loader" style="display:none;"><img src="loader.svg" ></li>
+<li class="list-group-item name" style="display:none; color:black;"></li>
+<li class="list-group-item size" style="display:none;color:black;"></li>
+<li class="list-group-item dli" style="display:none;"><a  href="#" class="btn dbtn btn-success" target="_blank">Download Movie</a></li>
+<li class="list-group-item">
+    
+<button class="btn btn-primary lbtn" onclick="javascript:capdone()">Generate Download Link</button>  
+    </li>
+    
+</ul>
+
+</div>
+
+
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script>
+    $(document).ready(function(){
+    $('.myHead').load('head.html');
+    $('.myFoot').load('foot.html');
+      
+    }) // Document Got Redy
+    </script>
+
+<script>
+
+function kbgb(bytes) {
+    if(bytes < 1024) return bytes + " Bytes";
+    else if(bytes < 1048576) return(bytes / 1024).toFixed(3) + " KB";
+    else if(bytes < 1073741824) return(bytes / 1048576).toFixed(3) + " MB";
+    else return(bytes / 1073741824).toFixed(3) + " GB";
+};
+
+$(document).ready(function(){
+
+    });
+
+
+function capdone(){
+
+$(".loader").show();
+$(".lbtn").addClass("disabled");
+setTimeout(function(){
+
+var formget = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+};
+
+
+
+var fileid = formget("u");
+
+if (fileid === undefined) {
+	throw new Error("Maadrchod, Randi ki Aulad");
+}
+
+var x="https://api.verystream.com/file/dlticket?login=628bd60c8fa47033d678&key=TgDE8K6ZfvX&file="+fileid;
+
+
+fetch('https://jsonp.afeld.me/?url='+encodeURIComponent(x)).then(function(response) {
+    return response.json();
+  })
+  .then(function(myJson) {
+//document.write(JSON.stringify(myJson));
+var jp = myJson["result"];
+
+var xu="https://api.verystream.com/file/dl?file="+fileid+"&ticket="+jp["ticket"];
+
+
+fetch('https://jsonp.afeld.me/?url='+encodeURIComponent(xu)).then(function(rresponse) {
+    return rresponse.json();
+  })
+  .then(function(myJsonn) {
+//document.write(JSON.stringify(myJsonn));
+var xp = myJsonn["result"];
+
+$(".dbtn").attr("href",xp["url"]);
+$(".name").text("File Name : "+xp["name"]);
+$(".size").text("File Size : "+kbgb(xp["size"]));
+$(".lbtn").hide();
+$(".dli").show();
+$(".name").show();
+$(".size").show();
+$(".loader").hide();
+
+   }); //Fetchh 2
+
+
+
+   }); //Fetchh 1
+
+}, 4000);
+
+ } //Capdone
+
+</script>
+<div class="myFoot mt-3"></div>
+
+  </body>
+</html>
